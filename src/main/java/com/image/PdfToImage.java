@@ -31,10 +31,13 @@ public class PdfToImage {
 		for (int i = 1; i <= pageSize; i++) {
 			// Rendering an image from the PDF document
 			// BufferedImage image = renderer.renderImage(i - 1);
-			BufferedImage image = renderer.renderImageWithDPI(i - 1, 900, ImageType.BINARY);
+			BufferedImage image = renderer.renderImageWithDPI(i - 1, 500, ImageType.BINARY);
 
 			// Writing the image to a file
-			imageFile = filePath + "_" + i + ".jpg";
+			imageFile = file.getName();
+			String temp = "_" + i + ".png";
+
+			imageFile = imageFile.replaceAll("(?i).pdf", temp);
 			ImageIO.write(image, "JPEG", new File(imageFile));
 		}
 

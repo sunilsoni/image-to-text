@@ -1,8 +1,7 @@
 package com.image;
 
 import static org.bytedeco.javacpp.lept.pixDestroy;
-import static org.bytedeco.javacpp.lept.pixRead;
-import static org.junit.Assert.assertTrue;
+import static org.bytedeco.javacpp.lept.pixRead; 
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -42,18 +41,19 @@ public class ImageToText {
 			outText = api.GetUTF8Text();
 			String output = outText.getString();
 
-			assertTrue(true);
+			 
 			logger.debug("OCR output String {}", output);
 
-			String textFileName = fileName + ".txt";
-			boolean isSuccess = writeFile(textFileName, output);
+			String textFileName = fileName;
 
-			// cleanup
+			textFileName = textFileName.replaceAll("(?i).png", ".txt");
+
+			boolean isSuccess = writeFile(textFileName, output);
 
 			if (isSuccess) {
 				return textFileName;
 			}
-		} finally {
+		} finally { // cleanup
 			api.End();
 			// api.close();
 			outText.deallocate();

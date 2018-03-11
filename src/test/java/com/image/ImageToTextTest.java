@@ -34,9 +34,7 @@ public class ImageToTextTest {
 	@After
 	public void end() {
 		end = System.currentTimeMillis();
-
 		diff = end - start;
-		// logger.info("millis-->" + (diff));// millis
 		logger.info("seconds-->" + (diff / 1000));// seconds
 	}
 
@@ -46,25 +44,25 @@ public class ImageToTextTest {
 		String fileName = "maxresdefault.jpg";
 		String actualResult = ImageToText.convertImgToText(fileName);
 
-		String expectedFileName = "maxresdefault.jpg.txt";
+		String expectedFileName = "maxresdefault.txt";
 		assertEquals(expectedFileName, actualResult);
 
 		fileName = "invoicesample.png";
 		actualResult = ImageToText.convertImgToText(fileName);
 
-		expectedFileName = "invoicesample.png.txt";
+		expectedFileName = "invoicesample.txt";
 		assertEquals(expectedFileName, actualResult);
 
 		fileName = "bill.png";
 		actualResult = ImageToText.convertImgToText(fileName);
 
-		expectedFileName = "bill.png.txt";
+		expectedFileName = "bill.txt";
 		assertEquals(expectedFileName, actualResult);
 
 		fileName = "car-invoice.JPG";
 		actualResult = ImageToText.convertImgToText(fileName);
 
-		expectedFileName = "car-invoice.JPG.txt";
+		expectedFileName = "car-invoice.txt";
 		assertEquals(expectedFileName, actualResult);
 
 	}
